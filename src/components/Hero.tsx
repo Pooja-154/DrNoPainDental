@@ -108,7 +108,7 @@ const Hero = () => {
             {/* Quick Booking Card */}
             <Card className="bg-white border-0 p-6 shadow-premium animate-fade-in" style={{ animationDelay: "0.6s" }}>
               <div className="text-center space-y-4">
-                <h3 className="text-xl font-semibold text-primary">Emergency Appointments Available</h3>
+                <h3 className="text-xl font-semibold text-[#7E287D]">Emergency Appointments Available</h3>
                 <p className="text-muted-foreground">Same-day consultations for urgent dental care</p>
                 <Button className="w-full bg-gradient-to-r from-[#7E287D] to-[#A34D9D] hover:shadow-dental">
                   Call Now: +91 74835 96630

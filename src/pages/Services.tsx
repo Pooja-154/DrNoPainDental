@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Bluetooth as Tooth, Sparkles, Heart, Smile, Baby, Shield, Star, Calendar, ChevronRight, Award, X, Zap, Eye, Clock, Users, CheckCircle, MessageCircle, ArrowLeft } from 'lucide-react';
-import Header from "@/components/Header";
-import { motion } from "framer-motion";
+import { Bluetooth as Tooth, Sparkles, Heart, Smile, Baby, Shield, Star, Calendar, ChevronRight, Award, X, Zap, Eye, Clock, Users, CheckCircle, MessageCircle } from 'lucide-react';
 
 interface ServiceDetail {
   whatItIs: string;
@@ -395,29 +393,6 @@ const services: Service[] = [
   }
 ];
 
-const teamValues = [
-  {
-    icon: <Heart className="h-6 w-6" />,
-    title: "Patient Comfort",
-    description: "Your comfort is our top priority in every interaction"
-  },
-  {
-    icon: <Shield className="h-6 w-6" />,
-    title: "Ethical Care",
-    description: "Honest, transparent treatment recommendations"
-  },
-  {
-    icon: <Star className="h-6 w-6" />,
-    title: "Excellence",
-    description: "We strive for the highest standards in dental care"
-  },
-  {
-    icon: <Users className="h-6 w-6" />,
-    title: "Community Focus",
-    description: "Building lasting relationships with our patients and community"
-  }
-];
-
 const FloatingParticles: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -437,7 +412,7 @@ const FloatingParticles: React.FC = () => {
               animationDuration,
             }}
           >
-            <div className="w-2 h-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full blur-sm" />
+            <div className="w-2 h-2 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] rounded-full blur-sm" />
           </div>
         );
       })}
@@ -464,29 +439,29 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
+      <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl animate-scaleIn">
         {/* Header */}
-        <div className="bg-gradient-to-r from-violet-500 to-pink-500 p-6 text-white relative">
+        <div className="bg-gradient-to-r from-[#7E287D] to-[#A34D9D] p-6 text-white relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-colors"
+            className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-all duration-300 transform hover:rotate-90"
           >
             <X className="w-6 h-6" />
           </button>
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
               <Icon className="w-8 h-8" />
             </div>
             <div>
               <h2 className="text-3xl font-bold">{service.title}</h2>
-              <p className="text-violet-100 mt-1">{service.description}</p>
+              <p className="text-purple-100 mt-1">{service.description}</p>
             </div>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200">
+        <div className="border-b border-gray-200 bg-gray-50">
           <div className="flex overflow-x-auto">
             {tabs.map((tab) => {
               const TabIcon = tab.icon;
@@ -494,10 +469,10 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center space-x-2 px-6 py-4 font-medium transition-colors whitespace-nowrap ${
+                  className={`flex items-center space-x-2 px-6 py-4 font-medium transition-all duration-300 whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'text-violet-600 border-b-2 border-violet-600'
-                      : 'text-gray-500 hover:text-gray-700'
+                      ? 'text-[#7E287D] border-b-2 border-[#7E287D] bg-white'
+                      : 'text-gray-500 hover:text-[#A34D9D] hover:bg-white/50'
                   }`}
                 >
                   <TabIcon className="w-4 h-4" />
@@ -511,22 +486,22 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
         {/* Content */}
         <div className="p-6 overflow-y-auto max-h-[60vh]">
           {activeTab === 'overview' && (
-            <div className="space-y-8">
+            <div className="space-y-8 animate-fadeInUp">
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">What It Is</h3>
+                <h3 className="text-xl font-bold text-[#7E287D] mb-3">What It Is</h3>
                 <p className="text-gray-600 leading-relaxed">{service.details.whatItIs}</p>
               </div>
-              
+
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Why It's Pain-Free at NoPain</h3>
+                <h3 className="text-xl font-bold text-[#7E287D] mb-3">Why It's Pain-Free at NoPain</h3>
                 <p className="text-gray-600 leading-relaxed">{service.details.whyPainFree}</p>
               </div>
-              
+
               <div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Benefits</h3>
+                <h3 className="text-xl font-bold text-[#7E287D] mb-3">Benefits</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {service.details.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center space-x-3">
+                    <div key={index} className="flex items-center space-x-3 animate-slideInLeft" style={{ animationDelay: `${index * 50}ms` }}>
                       <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                       <span className="text-gray-600">{benefit}</span>
                     </div>
@@ -537,13 +512,17 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
           )}
 
           {activeTab === 'technology' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Advanced Technology Used</h3>
+            <div className="animate-fadeInUp">
+              <h3 className="text-xl font-bold text-[#7E287D] mb-6">Advanced Technology Used</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {service.details.technologyUsed.map((tech, index) => (
-                  <div key={index} className="bg-gradient-to-r from-violet-50 to-pink-50 p-4 rounded-xl border border-violet-100">
+                  <div
+                    key={index}
+                    className="bg-gradient-to-r from-[#7E287D]/10 to-[#A34D9D]/10 p-4 rounded-xl border border-[#A34D9D]/30 transform transition-all duration-300 hover:scale-105 hover:shadow-lg animate-slideInUp"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     <div className="flex items-center space-x-3">
-                      <Zap className="w-5 h-5 text-violet-600" />
+                      <Zap className="w-5 h-5 text-[#7E287D]" />
                       <span className="font-medium text-gray-800">{tech}</span>
                     </div>
                   </div>
@@ -553,12 +532,12 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
           )}
 
           {activeTab === 'process' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-6">What to Expect</h3>
+            <div className="animate-fadeInUp">
+              <h3 className="text-xl font-bold text-[#7E287D] mb-6">What to Expect</h3>
               <div className="space-y-4">
                 {service.details.whatToExpect.map((step, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-gradient-to-r from-violet-500 to-pink-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  <div key={index} className="flex items-start space-x-4 animate-slideInLeft" style={{ animationDelay: `${index * 100}ms` }}>
+                    <div className="w-8 h-8 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 transform transition-transform duration-300 hover:scale-110">
                       {index + 1}
                     </div>
                     <p className="text-gray-600 pt-1">{step}</p>
@@ -569,12 +548,16 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
           )}
 
           {activeTab === 'faq' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h3>
+            <div className="animate-fadeInUp">
+              <h3 className="text-xl font-bold text-[#7E287D] mb-6">Frequently Asked Questions</h3>
               <div className="space-y-6">
                 {service.details.faqs.map((faq, index) => (
-                  <div key={index} className="bg-gray-50 p-6 rounded-xl">
-                    <h4 className="font-semibold text-gray-800 mb-2">{faq.question}</h4>
+                  <div
+                    key={index}
+                    className="bg-gray-50 p-6 rounded-xl transform transition-all duration-300 hover:shadow-lg hover:bg-gradient-to-r hover:from-[#7E287D]/5 hover:to-[#A34D9D]/5 animate-slideInUp"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <h4 className="font-semibold text-[#7E287D] mb-2">{faq.question}</h4>
                     <p className="text-gray-600">{faq.answer}</p>
                   </div>
                 ))}
@@ -583,81 +566,85 @@ const ServiceDetailModal: React.FC<{ service: Service; onClose: () => void }> = 
           )}
 
           {activeTab === 'testimonials' && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Patient Testimonials</h3>
+            <div className="animate-fadeInUp">
+              <h3 className="text-xl font-bold text-[#7E287D] mb-6">Patient Testimonials</h3>
               <div className="space-y-6">
                 {service.details.testimonials.map((testimonial, index) => (
-                  <div key={index} className="bg-gradient-to-r from-violet-50 to-pink-50 p-6 rounded-xl border border-violet-100">
+                  <div
+                    key={index}
+                    className="bg-gradient-to-r from-[#7E287D]/10 to-[#A34D9D]/10 p-6 rounded-xl border border-[#A34D9D]/30 transform transition-all duration-300 hover:scale-105 hover:shadow-xl animate-slideInUp"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     <div className="flex items-center space-x-2 mb-3">
                       {renderStars(testimonial.rating)}
                     </div>
                     <p className="text-gray-700 mb-3 italic">"{testimonial.text}"</p>
-                    <p className="font-semibold text-gray-800">- {testimonial.name}</p>
+                    <p className="font-semibold text-[#7E287D]">- {testimonial.name}</p>
                   </div>
                 ))}
               </div>
             </div>
           )}
         </div>
-
-        {/* Footer CTA */}
-        
       </div>
     </div>
   );
 };
 
-const ServiceCard: React.FC<{ service: Service; onLearnMore: () => void }> = ({ service, onLearnMore }) => {
+const ServiceCard: React.FC<{ service: Service; onLearnMore: () => void; index: number }> = ({ service, onLearnMore, index }) => {
   const Icon = service.icon;
-  
+
   return (
-    <div className="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 border border-violet-100">
+    <div
+      className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 border border-[#A34D9D]/20 animate-fadeInUp"
+      style={{ animationDelay: `${index * 150}ms` }}
+    >
       {/* Gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-[#7E287D]/10 via-[#A34D9D]/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+
       {/* Featured badge */}
       {service.featured && (
-        <div className="absolute -top-3 -right-3 bg-gradient-to-r from-violet-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+        <div className="absolute -top-3 -right-3 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-bounce">
           <Star className="w-4 h-4 inline mr-1" />
           Featured
         </div>
       )}
-      
+
       <div className="relative z-10">
         {/* Icon */}
-        <div className="w-16 h-16 bg-gradient-to-br from-violet-400 to-pink-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+        <div className="w-16 h-16 bg-gradient-to-br from-[#7E287D] to-[#A34D9D] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
           <Icon className="w-8 h-8 text-white" />
         </div>
-        
+
         {/* Content */}
-        <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-violet-700 transition-colors duration-300">
+        <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#7E287D] transition-colors duration-300">
           {service.title}
         </h3>
-        
+
         <p className="text-gray-600 mb-6 leading-relaxed">
           {service.description}
         </p>
-        
+
         {/* Benefits */}
         <div className="space-y-2 mb-6">
           {service.benefits.map((benefit, index) => (
-            <div key={index} className="flex items-center text-sm text-violet-700">
-              <Award className="w-4 h-4 mr-2 text-pink-500" />
+            <div key={index} className="flex items-center text-sm text-[#7E287D] transform transition-transform duration-300 hover:translate-x-2">
+              <Award className="w-4 h-4 mr-2 text-[#A34D9D]" />
               {benefit}
             </div>
           ))}
         </div>
-        
+
         {/* CTA Buttons */}
         <div className="flex space-x-3">
-          <button 
+          <button
             onClick={onLearnMore}
-            className="flex-1 bg-gradient-to-r from-violet-500 to-pink-500 text-white font-semibold py-3 px-6 rounded-full hover:from-violet-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="flex-1 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white font-semibold py-3 px-6 rounded-full hover:from-[#7E287D]/90 hover:to-[#A34D9D]/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
           >
             Learn More
             <ChevronRight className="w-4 h-4 inline ml-2" />
           </button>
-          <button className="bg-white border-2 border-violet-200 text-violet-600 font-semibold py-3 px-6 rounded-full hover:bg-violet-50 transition-all duration-300 shadow-md hover:shadow-lg">
+          <button className="bg-white border-2 border-[#7E287D] text-[#7E287D] font-semibold py-3 px-6 rounded-full hover:bg-[#7E287D] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
             <Calendar className="w-4 h-4 inline mr-2" />
             Book Now
           </button>
@@ -673,97 +660,209 @@ export const Services: React.FC = () => {
   const otherServices = services.filter(service => !service.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lavender-50 via-pink-50 to-violet-50 relative overflow-hidden">
-        <motion.div
-          className="min-h-screen bg-gradient-to-br from-lavender-50 via-pink-50 to-violet-50 relative overflow-hidden"
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <Header />
-          <FloatingParticles />
-          
-          {/* Header */}
-          <div className="relative z-10 pt-20 pb-12">
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-violet-500 to-pink-500 rounded-full mb-8">
-                  <Sparkles className="w-10 h-10 text-white" />
-                </div>
-                <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                  Our Services
-                </h1>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                  Explore our range of pain-free and aesthetic-focused treatments designed to give you the perfect smile you deserve.
-                </p>
-              </div>
-              
-              {/* Featured Services */}
-              <div className="mb-20">
-                <div className="flex items-center justify-center mb-12">
-                  <div className="bg-gradient-to-r from-violet-500 to-pink-500 h-1 w-16 rounded-full mr-4" />
-                  <h2 className="text-3xl font-bold text-gray-800">Featured Services</h2>
-                  <div className="bg-gradient-to-r from-pink-500 to-violet-500 h-1 w-16 rounded-full ml-4" />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {featuredServices.map((service) => (
-                    <ServiceCard 
-                      key={service.id} 
-                      service={service} 
-                      onLearnMore={() => setSelectedService(service)}
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              {/* Additional Services */}
-              {otherServices.length > 0 && (
-                <div>
-                  <div className="flex items-center justify-center mb-12">
-                    <div className="bg-gradient-to-r from-violet-400 to-pink-400 h-1 w-12 rounded-full mr-4" />
-                    <h2 className="text-2xl font-bold text-gray-700">Additional Services</h2>
-                    <div className="bg-gradient-to-r from-pink-400 to-violet-400 h-1 w-12 rounded-full ml-4" />
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {otherServices.map((service) => (
-                      <ServiceCard 
-                        key={service.id} 
-                        service={service} 
-                        onLearnMore={() => setSelectedService(service)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Call to Action */}
-              <div className="mt-20 text-center">
-                <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-violet-100">
-                  <h3 className="text-3xl font-bold text-gray-800 mb-4">
-                    Ready to Transform Your Smile?
-                  </h3>
-                  <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                    Schedule your consultation today and discover why thousands choose NoPain Dental for their oral care needs.
-                  </p>
-                  <button className="bg-gradient-to-r from-violet-500 to-pink-500 text-white font-bold py-4 px-12 rounded-full text-lg hover:from-violet-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
-                    <Calendar className="w-6 h-6 inline mr-3" />
-                    Schedule Your Appointment
-                  </button>
-                </div>
-              </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 relative overflow-hidden">
+      <FloatingParticles />
+
+      {/* Header */}
+      <div className="relative z-10 pt-32 pb-12 animate-fadeIn">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 animate-slideDown">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] rounded-full mb-8 animate-pulse shadow-2xl">
+              <Sparkles className="w-10 h-10 text-white" />
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#7E287D] via-[#A34D9D] to-purple-600 bg-clip-text text-transparent mb-6 animate-slideUp">
+              Our Services
+            </h1>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fadeInUp delay-200">
+              Explore our range of pain-free and aesthetic-focused treatments designed to give you the perfect smile you deserve.
+            </p>
+          </div>
+
+          {/* Featured Services */}
+          <div className="mb-20">
+            <div className="flex items-center justify-center mb-12 animate-fadeInUp">
+              <div className="bg-gradient-to-r from-[#7E287D] to-[#A34D9D] h-1 w-16 rounded-full mr-4" />
+              <h2 className="text-3xl font-bold text-gray-800">Featured Services</h2>
+              <div className="bg-gradient-to-r from-[#A34D9D] to-[#7E287D] h-1 w-16 rounded-full ml-4" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredServices.map((service, index) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  onLearnMore={() => setSelectedService(service)}
+                  index={index}
+                />
+              ))}
             </div>
           </div>
-        </motion.div>
+
+          {/* Additional Services */}
+          {otherServices.length > 0 && (
+            <div>
+              <div className="flex items-center justify-center mb-12 animate-fadeInUp">
+                <div className="bg-gradient-to-r from-[#7E287D]/70 to-[#A34D9D]/70 h-1 w-12 rounded-full mr-4" />
+                <h2 className="text-2xl font-bold text-gray-700">Additional Services</h2>
+                <div className="bg-gradient-to-r from-[#A34D9D]/70 to-[#7E287D]/70 h-1 w-12 rounded-full ml-4" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {otherServices.map((service, index) => (
+                  <ServiceCard
+                    key={service.id}
+                    service={service}
+                    onLearnMore={() => setSelectedService(service)}
+                    index={index + featuredServices.length}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Call to Action */}
+          <div className="mt-20 text-center animate-fadeInUp">
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-[#A34D9D]/30 transform transition-all duration-500 hover:scale-105">
+              <h3 className="text-3xl font-bold text-[#7E287D] mb-4">
+                Ready to Transform Your Smile?
+              </h3>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Schedule your consultation today and discover why thousands choose NoPain Dental for their oral care needs.
+              </p>
+              <button className="bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white font-bold py-4 px-12 rounded-full text-lg hover:from-[#7E287D]/90 hover:to-[#A34D9D]/90 transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-purple-400/50">
+                <Calendar className="w-6 h-6 inline mr-3" />
+                Schedule Your Appointment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Service Detail Modal */}
       {selectedService && (
-        <ServiceDetailModal 
-          service={selectedService} 
-          onClose={() => setSelectedService(null)} 
+        <ServiceDetailModal
+          service={selectedService}
+          onClose={() => setSelectedService(null)}
         />
       )}
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.8s ease-out;
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.6s ease-out;
+        }
+
+        .animate-slideInLeft {
+          animation: slideInLeft 0.5s ease-out;
+        }
+
+        .animate-slideInUp {
+          animation: slideInUp 0.5s ease-out;
+        }
+
+        .animate-scaleIn {
+          animation: scaleIn 0.4s ease-out;
+        }
+
+        .animate-float {
+          animation: float ease-in-out infinite;
+        }
+
+        .delay-200 {
+          animation-delay: 200ms;
+        }
+      `}</style>
     </div>
   );
 };

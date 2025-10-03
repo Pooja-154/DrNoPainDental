@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "@assets/No Pain Dental Master Logo FIle-11.svg"; // ✅ Import your logo
+import Logo from "@/assets/logo-11.png"; // ✅ Import your logo
 import Blog from "@/pages/Blog";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +31,7 @@ const Header = () => {
             <img
               src={Logo}
               alt="Dr. NoPain Dental Logo"
-              className="h-12 w-auto rounded-lg shadow-dental scale-150"
+              className="w-40 h-12  w-auto rounded-lg shadow-dental scale-150"
             />
           </Link>
 

@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import logo2 from "@/assets/logo2.png";
+import logo2 from "@/assets/logo-13.png";
 
 const Footer = () => {
   return (
@@ -49,7 +49,7 @@ const Footer = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-bold text-primary">Dr. NoPain Dental</h3>
+                  <h3 className="font-bold text-[#7E287D]">Dr. NoPain Dental</h3>
                   <p className="text-sm text-muted-foreground">
                     PainFree Treatments <br /> Picture Perfect Smiles
                   </p>
@@ -68,7 +68,7 @@ const Footer = () => {
               <h4 className="font-semibold text-foreground">Contact Information</h4>
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
-                  <MapPin className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                  <MapPin className="h-4 w-4 text-[#7E287D] mt-1 flex-shrink-0" />
                   <div className="text-sm text-muted-foreground">
                     First floor, Doddathayamma Complex, <br />
                     Sy No. 8/3, FCI Main Road, Near Axis,<br />
@@ -77,19 +77,19 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone className="h-4 w-4 text-primary" />
+                  <Phone className="h-4 w-4 text-[#7E287D]" />
                   <a
                     href="tel:+917483596630"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-[#7E287D] transition-colors"
                   >
                     +91 74835 96630
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Mail className="h-4 w-4 text-primary" />
+                  <Mail className="h-4 w-4 text-[#7E287D]" />
                   <a
                     href="mailto:drnopaindental@gmail.com"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="text-sm text-muted-foreground hover:text-[#7E287D] transition-colors"
                   >
                     drnopaindental@gmail.com
                   </a>
@@ -102,19 +102,19 @@ const Footer = () => {
           <div className="lg:col-span-1 space-y-4 flex flex-col">
             <h4 className="font-semibold text-foreground">Quick Links</h4>
             <div className="space-y-2 mb-6">
-              <Link to="/about" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/about" className="block text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
                 About Us
               </Link>
-              <Link to="/servicessection" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/servicessection" className="block text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
                 Our Services
               </Link>
-              <Link to="/gallery" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/gallery" className="block text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
                 Smile Gallery
               </Link>
-              <Link to="/testimonialsection" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/testimonialsection" className="block text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
                 Patient Experience
               </Link>
-              <Link to="/blog" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to="/blog" className="block text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
                 Blog
               </Link>
             </div>
@@ -123,7 +123,7 @@ const Footer = () => {
               <h4 className="font-semibold text-foreground">Practice Hours</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-3">
-                  <Clock className="h-4 w-4 text-primary" />
+                  <Clock className="h-4 w-4 text-[#7E287D]" />
                   <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
                 </div>
                 <div className="ml-7">
@@ -167,10 +167,10 @@ const Footer = () => {
             © 2025 Dr. NoPain Dental. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/terms" className="text-sm text-muted-foreground hover:text-[#7E287D] transition-colors">
               Terms of Service
             </Link>
           </div>

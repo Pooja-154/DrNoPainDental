@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, Filter, ChevronLeft, ChevronRight, Star, Award, Sparkles, Eye, Calendar, ArrowLeft, ArrowRight } from 'lucide-react';
-import Header from './Header';
 
 interface GalleryItem {
   id: string;
@@ -126,7 +125,7 @@ const FloatingParticles: React.FC = () => {
               animationDuration,
             }}
           >
-            <div className="w-2 h-2 bg-gradient-to-r from-violet-400 to-pink-400 rounded-full blur-sm" />
+            <div className="w-2 h-2 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] rounded-full blur-sm" />
           </div>
         );
       })}
@@ -134,7 +133,7 @@ const FloatingParticles: React.FC = () => {
   );
 };
 
-const BeforeAfterSlider: React.FC<{ item: GalleryItem }> = ({ item }) => {
+const BeforeAfterSlider: React.FC<{ item: GalleryItem; index: number }> = ({ item, index }) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -189,7 +188,10 @@ const BeforeAfterSlider: React.FC<{ item: GalleryItem }> = ({ item }) => {
   }, [isDragging]);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500">
+    <div
+      className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl hover:shadow-purple-300/50 transition-all duration-500 transform hover:-translate-y-2 animate-fadeInUp"
+      style={{ animationDelay: `${index * 150}ms` }}
+    >
       {/* Before/After Slider */}
       <div
         ref={containerRef}
@@ -202,36 +204,36 @@ const BeforeAfterSlider: React.FC<{ item: GalleryItem }> = ({ item }) => {
         <img
           src={item.afterImage}
           alt={`${item.procedure} after treatment`}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         {/* Before Image (Clipped) */}
         <div
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 overflow-hidden transition-all duration-300"
           style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
         >
           <img
             src={item.beforeImage}
             alt={`${item.procedure} before treatment`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
         {/* Slider Line */}
         <div
-          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 cursor-col-resize"
+          className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10 cursor-col-resize transition-all duration-200"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-            <ArrowLeft className="w-3 h-3 text-gray-600 absolute left-1" />
-            <ArrowRight className="w-3 h-3 text-gray-600 absolute right-1" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] rounded-full shadow-lg flex items-center justify-center">
+            <ArrowLeft className="w-3 h-3 text-white absolute left-1" />
+            <ArrowRight className="w-3 h-3 text-white absolute right-1" />
           </div>
         </div>
 
         {/* Before/After Labels */}
-        <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
           <Eye className="w-4 h-4 inline mr-1" />
           Before
         </div>
-        <div className="absolute top-4 right-4 bg-gradient-to-r from-violet-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+        <div className="absolute top-4 right-4 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
           <Sparkles className="w-4 h-4 inline mr-1" />
           After
         </div>
@@ -240,7 +242,7 @@ const BeforeAfterSlider: React.FC<{ item: GalleryItem }> = ({ item }) => {
       {/* Content */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="bg-gradient-to-r from-violet-100 to-pink-100 text-violet-700 px-3 py-1 rounded-full text-sm font-medium">
+          <span className="bg-gradient-to-r from-[#7E287D]/10 to-[#A34D9D]/10 text-[#7E287D] px-3 py-1 rounded-full text-sm font-medium border border-[#A34D9D]/30">
             {item.procedure}
           </span>
           <div className="flex items-center text-yellow-500">
@@ -250,30 +252,30 @@ const BeforeAfterSlider: React.FC<{ item: GalleryItem }> = ({ item }) => {
           </div>
         </div>
 
-        <h3 className="text-lg font-bold text-gray-800 mb-2">{item.caption}</h3>
+        <h3 className="text-lg font-bold text-[#7E287D] mb-2">{item.caption}</h3>
         <p className="text-gray-600 text-sm mb-4">{item.description}</p>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="text-center">
+          <div className="text-center p-3 bg-gradient-to-br from-[#7E287D]/5 to-[#A34D9D]/5 rounded-lg">
             <div className="text-sm text-gray-500">Patient Age</div>
-            <div className="font-semibold text-gray-800">{item.patientAge}</div>
+            <div className="font-semibold text-[#7E287D]">{item.patientAge}</div>
           </div>
-          <div className="text-center">
+          <div className="text-center p-3 bg-gradient-to-br from-[#7E287D]/5 to-[#A34D9D]/5 rounded-lg">
             <div className="text-sm text-gray-500">Treatment Time</div>
-            <div className="font-semibold text-gray-800">{item.treatmentDuration}</div>
+            <div className="font-semibold text-[#7E287D]">{item.treatmentDuration}</div>
           </div>
         </div>
 
         <div className="space-y-2 mb-4">
           {item.results.map((result, index) => (
             <div key={index} className="flex items-center text-sm text-gray-600">
-              <Award className="w-4 h-4 text-violet-500 mr-2 flex-shrink-0" />
+              <Award className="w-4 h-4 text-[#A34D9D] mr-2 flex-shrink-0" />
               {result}
             </div>
           ))}
         </div>
 
-        <button className="w-full bg-gradient-to-r from-violet-500 to-pink-500 text-white font-semibold py-3 px-6 rounded-full hover:from-violet-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+        <button className="w-full bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white font-semibold py-3 px-6 rounded-full hover:from-[#7E287D]/90 hover:to-[#A34D9D]/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
           <Calendar className="w-4 h-4 inline mr-2" />
           Book Similar Treatment
         </button>
@@ -287,8 +289,8 @@ export const Gallery: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const filteredData = selectedProcedure === 'All' 
-    ? galleryData 
+  const filteredData = selectedProcedure === 'All'
+    ? galleryData
     : galleryData.filter(item => item.procedure === selectedProcedure);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -301,36 +303,35 @@ export const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lavender-50 via-pink-50 to-violet-50 relative overflow-hidden">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 relative overflow-hidden">
       <FloatingParticles />
-      
+
       {/* Header */}
-      <div className="relative z-10 pt-20 pb-12">
+      <div className="relative z-10 pt-32 pb-12 animate-fadeIn">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-violet-500 to-pink-500 rounded-full mb-8">
+          <div className="text-center mb-16 animate-slideDown">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-[#7E287D] to-[#A34D9D] rounded-full mb-8 animate-pulse shadow-2xl">
               <Camera className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-purple-600 bg-clip-text text-transparent mb-6 pb-5">
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#7E287D] via-[#A34D9D] to-purple-600 bg-clip-text text-transparent mb-6 animate-slideUp">
               Smile Gallery
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Witness the incredible transformations achieved through our pain-free dental treatments. 
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed animate-fadeInUp delay-200">
+              Witness the incredible transformations achieved through our pain-free dental treatments.
               Each smile tells a story of renewed confidence and exceptional care.
             </p>
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fadeInUp delay-300">
             {procedures.map((procedure) => (
               <button
                 key={procedure}
                 onClick={() => handleProcedureChange(procedure)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
                   selectedProcedure === procedure
-                    ? 'bg-gradient-to-r from-violet-500 to-pink-500 text-white shadow-lg'
-                    : 'bg-white/80 text-gray-700 hover:bg-white shadow-md hover:shadow-lg'
+                    ? 'bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white shadow-lg'
+                    : 'bg-white/90 text-gray-700 hover:bg-white shadow-md hover:shadow-lg'
                 }`}
               >
                 <Filter className="w-4 h-4 inline mr-2" />
@@ -340,41 +341,41 @@ export const Gallery: React.FC = () => {
           </div>
 
           {/* Results Count */}
-          <div className="text-center mb-8">
-            <p className="text-gray-600">
-              Showing <span className="font-semibold text-violet-600">{filteredData.length}</span> amazing transformations
+          <div className="text-center mb-8 animate-fadeInUp delay-400">
+            <p className="text-gray-700">
+              Showing <span className="font-semibold text-[#7E287D]">{filteredData.length}</span> amazing transformations
               {selectedProcedure !== 'All' && (
-                <span> for <span className="font-semibold text-pink-600">{selectedProcedure}</span></span>
+                <span> for <span className="font-semibold text-[#A34D9D]">{selectedProcedure}</span></span>
               )}
             </p>
           </div>
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {currentItems.map((item) => (
-              <BeforeAfterSlider key={item.id} item={item} />
+            {currentItems.map((item, index) => (
+              <BeforeAfterSlider key={item.id} item={item} index={index} />
             ))}
           </div>
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center space-x-4">
+            <div className="flex justify-center items-center space-x-4 animate-fadeInUp">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl hover:bg-gradient-to-r hover:from-[#7E287D] hover:to-[#A34D9D] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-110"
               >
-                <ChevronLeft className="w-5 h-5 text-gray-600" />
+                <ChevronLeft className="w-5 h-5 text-gray-600 hover:text-white" />
               </button>
-              
+
               <div className="flex space-x-2">
                 {[...Array(totalPages)].map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentPage(index + 1)}
-                    className={`w-10 h-10 rounded-full font-semibold transition-all duration-300 ${
+                    className={`w-10 h-10 rounded-full font-semibold transition-all duration-300 transform hover:scale-110 ${
                       currentPage === index + 1
-                        ? 'bg-gradient-to-r from-violet-500 to-pink-500 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white shadow-lg'
                         : 'bg-white text-gray-600 hover:bg-gray-50 shadow-md'
                     }`}
                   >
@@ -382,29 +383,29 @@ export const Gallery: React.FC = () => {
                   </button>
                 ))}
               </div>
-              
+
               <button
                 onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
-                className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl hover:bg-gradient-to-r hover:from-[#7E287D] hover:to-[#A34D9D] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-110"
               >
-                <ChevronRight className="w-5 h-5 text-gray-600" />
+                <ChevronRight className="w-5 h-5 text-gray-600 hover:text-white" />
               </button>
             </div>
           )}
 
           {/* Call to Action */}
-          <div className="mt-20 text-center">
-            <div className="bg-white/60 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-violet-100">
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">
+          <div className="mt-20 text-center animate-fadeInUp delay-500">
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border border-[#A34D9D]/30 transform transition-all duration-500 hover:scale-105">
+              <h3 className="text-3xl font-bold text-[#7E287D] mb-4">
                 Ready for Your Own Transformation?
               </h3>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join hundreds of satisfied patients who have transformed their smiles with our pain-free treatments. 
+                Join hundreds of satisfied patients who have transformed their smiles with our pain-free treatments.
                 Your dream smile is just one appointment away.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-violet-500 to-pink-500 text-white font-bold py-4 px-8 rounded-full text-lg hover:from-violet-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <button className="bg-gradient-to-r from-[#7E287D] to-[#A34D9D] text-white font-bold py-4 px-8 rounded-full text-lg hover:from-[#7E287D]/90 hover:to-[#A34D9D]/90 transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-purple-400/50">
                   <Calendar className="w-6 h-6 inline mr-3" />
                   Schedule Consultation
                 </button>
@@ -413,6 +414,91 @@ export const Gallery: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.8s ease-out;
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.6s ease-out;
+        }
+
+        .animate-float {
+          animation: float ease-in-out infinite;
+        }
+
+        .delay-200 {
+          animation-delay: 200ms;
+        }
+
+        .delay-300 {
+          animation-delay: 300ms;
+        }
+
+        .delay-400 {
+          animation-delay: 400ms;
+        }
+
+        .delay-500 {
+          animation-delay: 500ms;
+        }
+      `}</style>
     </div>
   );
 };

@@ -69,7 +69,7 @@ const TestimonialsSection = () => {
         <div className="text-center space-y-6 mb-16">
           <div className="flex justify-center">
             <div className="bg-white rounded-full p-4 shadow-dental">
-              <Quote className="h-8 w-8 text-primary" />
+              <Quote className="h-8 w-8 text-[#7E287D]" />
             </div>
           </div>
           <div className="space-y-4">
@@ -100,7 +100,7 @@ const TestimonialsSection = () => {
                 </blockquote>
                 {/* Patient Name */}
                 <div className="mt-6 text-center">
-                  <span className="font-bold text-2xl text-primary">{currentTestimonial.name}</span>
+                  <span className="font-bold text-2xl text-[#7E287D]">{currentTestimonial.name}</span>
                 </div>
               </div>
             </CardContent>
@@ -125,8 +125,8 @@ const TestimonialsSection = () => {
                   onClick={() => setCurrentIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-primary scale-125' 
-                      : 'bg-primary/30 hover:bg-primary/50'
+                      ? 'bg-[#7E287D] scale-125' 
+                      : 'bg-[#7E287D]/30 hover:bg-[#7E287D]/50'
                   }`}
                 />
               ))}
@@ -154,7 +154,7 @@ const TestimonialsSection = () => {
             <div key={index} className="text-center">
               <Card className="bg-white/50 backdrop-blur-sm border-white/20 p-6 hover:bg-white/70 transition-all duration-300">
                 <div className="space-y-2">
-                  <div className="text-3xl font-bold text-primary">{stat.number}</div>
+                  <div className="text-3xl font-bold text-[#7E287D]">{stat.number}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               </Card>
