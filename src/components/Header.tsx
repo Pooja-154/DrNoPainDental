@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "@/assets/Logo.png"; // ✅ Import your logo
+import Logo from "@assets/No Pain Dental Master Logo FIle-11.svg"; // ✅ Import your logo
 import Blog from "@/pages/Blog";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
