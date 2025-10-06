@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { UserCheck, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
-import drNikitaPortrait from "@/assets/dr-nopain-portrait.jpg";
+import drNikitaPortrait from "@/assets/profilepic.jpg";
 
 const AboutDoctorSection = () => {
   return (

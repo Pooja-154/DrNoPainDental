@@ -18,6 +18,7 @@ import {
   CheckCircle,
   Sparkles
 } from "lucide-react";
+import DrNikita from "@/assets/profilepic.jpg";
 
 const Team = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -181,9 +182,9 @@ const Team = () => {
                 <div className="bg-gradient-to-br from-[#7E287D] to-[#A34D9D] rounded-2xl p-1 transform hover:scale-105 transition-transform duration-300">
                   <Card className="bg-white shadow-2xl border-0 overflow-hidden">
                     <div className="p-6">
-                      <img 
-                        src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="Dr. Nikita Singh - Leading dental professional"
+                      <img
+                        src={DrNikita}
+                        alt="Dr. Nikita Singh - Founder & Chief Endodontist"
                         className="w-full h-96 object-cover rounded-lg"
                       />
                       <div className="mt-4 text-center">

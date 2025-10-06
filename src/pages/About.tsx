@@ -1,5 +1,12 @@
 import { Award, Heart, Shield, Star, Users, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import  DrNikita from "@/assets/profilepic.jpg";
+import p1 from "@/assets/clinic/1.jpg";
+import p2 from "@/assets/clinic/2.jpg";
+import p3 from "@/assets/clinic/3.jpg";
+import p4 from "@/assets/clinic/4.jpg";
+import p5 from "@/assets/clinic/5.jpg";
+import p6 from "@/assets/clinic/6.jpg";
 
 const About = () => {
   const navigate = useNavigate();
@@ -81,12 +88,14 @@ const About = () => {
               <div className="flex justify-center animate-slideInRight">
                 <div className="bg-white shadow-2xl border border-purple-100 rounded-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-purple-300/50">
                   <div className="p-6">
-                    <div className="w-full h-96 bg-gradient-to-br from-[#7E287D]/10 to-[#A34D9D]/10 rounded-lg flex items-center justify-center animate-pulse">
-                      <div className="text-center">
-                        <div className="text-6xl mb-4">👩‍⚕️</div>
-                        <p className="text-gray-500">Dr. Portrait</p>
-                      </div>
+                    <div className="relative rounded-lg overflow-hidden shadow-2xl border-4 border-[#6a1d3a]/20">
+                      <img
+                        src={DrNikita}
+                        alt="Dr. Nikita Singh"
+                        className="w-full h-96 object-cover"
+                      />
                     </div>
+
                     <div className="mt-4 text-center">
                       <h3 className="text-xl font-semibold text-[#7E287D]">Dr. Nikita Singh</h3>
                       <p className="text-gray-600">Founder & Chief Endodontist</p>
@@ -146,26 +155,27 @@ const About = () => {
               </p>
             </div>
 
+            {/* Image Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { emoji: "🏠", title: "Waiting Lounge", desc: "Comfortable seating area" },
-                { emoji: "💡", title: "Soft Lighting", desc: "Ambient and calming" },
-                { emoji: "🏥", title: "Treatment Room", desc: "Modern and peaceful" },
-                { emoji: "🌿", title: "Reception Area", desc: "Welcoming entrance" },
-                { emoji: "🛋", title: "Relaxation Zone", desc: "Pre-treatment comfort" },
-                { emoji: "✨", title: "Spa Interiors", desc: "Luxury atmosphere" }
-              ].map((item, index) => (
+                "1.jpg",
+                "3.jpg",
+                "5.jpg",
+                "4.jpg",
+                "6.jpg",
+                "2.jpg",
+              ].map((img, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl hover:shadow-purple-200/50 transition-all duration-500 transform hover:scale-105 animate-fadeInUp"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="aspect-video bg-gradient-to-br from-[#7E287D]/10 to-[#A34D9D]/10 flex items-center justify-center">
-                    <div className="text-center text-[#7E287D]">
-                      <div className="text-4xl mb-2 animate-bounce">{item.emoji}</div>
-                      <p className="font-semibold text-lg">{item.title}</p>
-                      <p className="text-sm text-gray-600">{item.desc}</p>
-                    </div>
+                  <div className="p-1 bg-gradient-to-br from-[#7E287D] to-[#A34D9D] rounded-xl">
+                    <img
+                      src={`/src/assets/clinic/${img}`}
+                      alt={`Clinic ${index + 1}`}
+                      className="w-full h-56 object-cover rounded-lg"
+                    />
                   </div>
                 </div>
               ))}

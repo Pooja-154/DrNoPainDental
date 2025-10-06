@@ -16,6 +16,7 @@ import Gallery from "@/components/Gallery";
 import Blog from "./pages/Blog";
 import Preloader from "./Preloader";
 const queryClient = new QueryClient();
+import Layout from "@/components/Layout";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -25,15 +26,16 @@ const App = () => (
           <Toaster />
           <Sonner />
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/blog" element={<Blog />} />
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
+            <Route element={<Layout/>}>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
           </Routes>
         </TooltipProvider>
       </RouteChangeLoaderWrapper>
